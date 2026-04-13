@@ -3,6 +3,7 @@ import cv2
 from utils import is_person, is_suspicious, draw_box, draw_zone, is_inside_zone, enhance_low_light
 from alert import play_alert
 import time
+import os
 
 # =========================
 # CONFIG
@@ -26,6 +27,10 @@ cap = cv2.VideoCapture(VIDEO_SOURCE)
 previous_inside = False
 
 print("System Running... Press ESC to exit")
+
+# Create outputs folder if not exists
+OUTPUT_DIR = "outputs"
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # =========================
 # MAIN LOOP
@@ -69,7 +74,7 @@ while True:
             play_alert()
 
         # Save screenshot
-        filename = f"intrusion_{int(time.time())}.jpg"
+        filename = os.path.join(OUTPUT_DIR, f"intrusion_{int(time.time())}.jpg")
         cv2.imwrite(filename, frame)
         print(f"📸 Saved: {filename}")
 
