@@ -1,0 +1,6 @@
+__pycache__/    #ignore compiled Python files
+*.pyc           #ignore Python cache
+.vscode/        #ignore Visual Studio Code settings
+models/         #ignore model files
+videos/         #ignore video files
+outputs/        #ignore output files
